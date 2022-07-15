@@ -1,0 +1,52 @@
+{% load mptt_tags %}
+<h2>Category</h2>
+<div class="panel-group {{ menu_class }}" id="accordian"><!--category-productsr-->
+<div>
+    <div>
+	<ul>
+	{% recursetree object_list %}
+	    <li>
+		<a href="{{node.get_absolute_url}}">{{node.title}}</a>
+		{% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+		{% endif %}
+	    </li>
+	{% endrecursetree %}
+	</ul>
+    </div>
+</div>
+	    <li>
+		<a href="{{node.get_absolute_url}}">{{node.title}}</a>
+		{% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+		{% endif %}
+	    </li>
+
+    {% endfor %}
+        <div class="panel panel-default">
+            {% for category in categories %}
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
+                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                        SSportswear
+                    </a>
+                </h4>
+            </div>
+            <div id="sportswear" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <ul>
+
+                        <li><a href="">{{ category.title }}</a></li>
+
+                    </ul>
+                </div>
+            </div>
+    {% endfor %}
+        </div>
+
+</div><!--/category-products-->
